@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Open Whether Map API Test</title>
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+        <ul id="temp"></ul>
+        <ul>Open Weather Map Data : </ul>
+        <ul id="open_wether_map_temp"></ul>
+        <ul id="open_wether_map_main"></ul>
+        <ul id="open_wether_map_clouds"></ul>
+        <input type="text" value="" placeholder="気温、天候など">
+        <output style="background:#FCC;">= 予想されるセンサー値</output>
+        <script>
+            var socket = io.connect('http://localhost:3000');
+
+            socket.on("temp", (temp)=> {
+                document.getElementById("temp").innerHTML = "・温度（センサ値） : \t" + temp;
+            })
+
+            socket.on("open_wether_map", (data)=> {
+                // data = {temp:"", main:"", clouds:""};
+                document.getElementById("open_wether_map_temp").innerHTML = "・地域の気温 : " + data.temp;
+                document.getElementById("open_wether_map_main").innerHTML = "・天候 : " + data.main;
+                document.getElementById("open_wether_map_clouds").innerHTML = "・雲の量 : " + data.clouds;
+            });
+        </script>
+    </body>
+</html>

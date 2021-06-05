@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>beebotte application test</title>
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+        <p>空調自動制御システム（仮）</p>
+        <ul>
+            <li>温度が閾値（今回は24度）を超えると空調作動</li>
+            <li>温度が閾値（今回は22度）を超えると空調停止</li>
+        </ul>
+        <div id="data"></div>
+        <script src="./sketch.js"></script>
+    </body>
+</html>
